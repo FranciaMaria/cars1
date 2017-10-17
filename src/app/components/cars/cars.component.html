@@ -1,3 +1,45 @@
-<p>
-  cars works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Car Table</h2>
+  <p></p>            
+  <table class="table table-bordered" *ngFor = "let car of cars; let i = index; ">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mark</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Max Speed</th>
+        <th>Automatic</th>
+        <th>Engine</th>
+        <th>Number of Doors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{car.id}}</td>
+        <td>{{car.mark}}</td>
+        <td>{{car.model}}</td>
+        <td>{{car.year}}</td>
+        <td>{{car.maxSpeed}}</td>
+        <td>{{car.isAutomatic}}</td>
+        <td>{{car.engine}}</td>
+        <td>{{car.numberOfDoors}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

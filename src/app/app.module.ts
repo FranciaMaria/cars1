@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CarsComponent } from './components/cars/cars.component';
+import { CarsService } from './share/services/cars.service';
 
 const appRoutes:Routes = [
  { path: 'cars', component: CarsComponent },
@@ -28,7 +29,7 @@ const appRoutes:Routes = [
   exports: [
     LayoutComponent
 	],
-  providers: [],
+  providers: [CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
