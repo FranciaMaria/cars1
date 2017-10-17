@@ -65,7 +65,7 @@ export class CarsService {
   	return this.http.post(
 
 
-  		'http://localhost:8000/cars.php', {
+  		'http://localhost:8000/car-add.php', {
 
   			id: id,
       		mark: mark,  
