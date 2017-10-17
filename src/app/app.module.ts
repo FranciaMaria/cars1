@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { CarsService } from './share/services/cars.service';
+import { CarFormComponent } from './components/cars/car-form/car-form.component';
 
 const appRoutes:Routes = [
  { path: 'cars', component: CarsComponent },
+ { path: 'add', component: CarFormComponent },
  { path: '', redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -18,10 +21,13 @@ const appRoutes:Routes = [
   declarations: [
     AppComponent,
     LayoutComponent,
-    CarsComponent
+    CarsComponent,
+    CarFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
 	)
