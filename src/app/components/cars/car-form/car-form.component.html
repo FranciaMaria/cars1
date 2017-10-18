@@ -32,6 +32,8 @@
     </div>
   </div>
 
+  <hr>
+
   <div class="form-group">
     <label>Year</label>
     <select #year="ngModel" [(ngModel)]="newCar.year" name='year' required="">
@@ -93,7 +95,7 @@
   </div>
 
   <div class="form-group">
-    <label>Engine</label>
+    <label>Engine</label><br>
     <input type="radio" name="engine" value="diesel" #engine="ngModel" [(ngModel)]="newCar.engine" required>diesel<br>
     <input type="radio" name="engine" value="petrol" #engine="ngModel" [(ngModel)]="newCar.engine" required>petrol<br>
   	<input type="radio" name="engine" value="electric" #engine="ngModel" [(ngModel)]="newCar.engine" required>electric<br>
@@ -109,7 +111,7 @@
 
   <div class="form-group">
     <label>Number of Doors</label>
-    <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" name='numberOfDoors' type="number" class="form-control" required ng-min=2 ng-max=5 [range]="[2, 5]">
+    <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" name='numberOfDoors' type="number" class="form-control" required ng-min=2 ng-max=5 [range]="[2, 5]"><br>
 
     <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
      class="alert alert-danger">
@@ -122,7 +124,9 @@
     </div>
   </div>
 
-  
+
+  <br><button type="button" class="btn btn-success" (click)="preview()">Preview</button>
+
   <button type="button" class="btn"
     (click)="carForm.reset()"
     [disabled]="carForm.form.pristine"

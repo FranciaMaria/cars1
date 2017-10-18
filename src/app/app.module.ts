@@ -12,7 +12,6 @@ import { CarsComponent } from './components/cars/cars.component';
 import { CarsService } from './share/services/cars.service';
 import { CarFormComponent } from './components/cars/car-form/car-form.component';
 import { CarRowComponent } from './components/cars/car-row/car-row.component';
-import { FilterPipe } from './share/pipes/filter.pipe';
 
 
 const appRoutes:Routes = [
@@ -28,8 +27,7 @@ const appRoutes:Routes = [
     LayoutComponent,
     CarsComponent,
     CarFormComponent,
-    CarRowComponent,
-    FilterPipe
+    CarRowComponent
   ],
   imports: [
     BrowserModule,

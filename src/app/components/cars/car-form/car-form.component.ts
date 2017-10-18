@@ -61,6 +61,18 @@ export class CarFormComponent {
   edit(car: Car) {
     this.newCar = Object.assign({}, car);
   }
+
+  preview() {
+    alert(`
+      Mark: ${this.newCar.mark}\n
+      Model: ${this.newCar.model}\n
+      Year: ${this.newCar.year}\n
+      Max Speed: ${this.newCar.maxSpeed}\n
+      Automatic: ${this.newCar.isAutomatic}\n
+      Engine: ${this.newCar.engine}\n
+      Number of doors: ${this.newCar.numberOfDoors}
+      `);
+  }
 }
 
 
