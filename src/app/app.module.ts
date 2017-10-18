@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -34,6 +35,7 @@ const appRoutes:Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CustomFormsModule,
     RouterModule.forRoot(
       appRoutes
 	)

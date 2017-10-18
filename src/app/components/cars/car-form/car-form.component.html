@@ -73,15 +73,18 @@
     </div>
   </div>
 
+<div class="form-group">
   <label for="maxSpeed">Max Speed (from 20 to 300):</label>
-  <input name="maxSpeed" #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed" type="number" min="20" max="300" class="form-control"><br>
+  <input name="maxSpeed" #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed" type="number" class="form-control" ng-min=20 ng-max=300 [range]="[20, 300]"><br>
 
-  <!-- <div *ngIf="maxSpeed.invalid && (maxSpeed.dirty || maxSpeed.touched)"
+  <div *ngIf="maxSpeed.invalid && (maxSpeed.dirty || numberOfDoors.touched)"
      class="alert alert-danger">
-      <div *ngIf="maxSpeed.value > 300 || maxSpeed.value < 20">
-        Minimum of Max Speed could be 20 and maximum 300.
+      <div *ngIf="maxSpeed.errors.range">
+        Minimum number of max Speed is 20 and maximum 300.
       </div>
-  </div> -->
+  </div>
+</div>
+
   
 
   <div class="form-group">
@@ -106,12 +109,15 @@
 
   <div class="form-group">
     <label>Number of Doors</label>
-    <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" name='numberOfDoors' type="number" class="form-control" required min="2" max="5">
+    <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" name='numberOfDoors' type="number" class="form-control" required ng-min=2 ng-max=5 [range]="[2, 5]">
 
     <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
      class="alert alert-danger">
       <div *ngIf="numberOfDoors.errors.required">
         Number of Doors required.
+      </div>
+      <div *ngIf="numberOfDoors.errors.range">
+        Minimum number of Doors is 2 and maximum 5.
       </div>
     </div>
   </div>
