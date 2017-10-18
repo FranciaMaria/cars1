@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Car } from '../models/car.model';
 import { Router } from '@angular/router';
+import { Observable, Observer } from 'rxjs';
 
 
-@Injectable()
+/*@Injectable()
 export class CarsService {
 
 	 
@@ -13,7 +14,7 @@ export class CarsService {
   	
   }
 
-  /*private cars: Car[] = [
+  private cars: Car[] = [
     {
       id: 1,
       mark: "Opel",  
@@ -47,12 +48,12 @@ export class CarsService {
    
   ];
 
-  getCars(){
+  /*getCars(){
     return this.cars;
   }*/
   
 
-  public getCars()
+/*  public getCars()
   {
   	return this.http.get<any[]>('http://localhost:8000/cars.php');
   }
@@ -79,8 +80,57 @@ export class CarsService {
 
   	);
 
+  }
 
+}
+*/
 
+@Injectable()
+export class CarsService {
+
+  constructor(private http: HttpClient) { }
+
+  public getCars()
+  {
+    return this.http.get<any[]>('http://localhost:8000/cars.php');
+  }
+
+  public addCar(car: Car)
+  {
+    return this.http.post('http://localhost:8000/car-add.php', {
+  
+      mark: car.mark,  
+      model: car.model,
+      year: car.year,
+      maxSpeed: car.maxSpeed,
+      isAutomatic: car.isAutomatic,
+      engine: car.engine, 
+      numberOfDoors: car.numberOfDoors
+    });
+  }
+
+  public editCar(car: Car)
+  {
+    return this.http.put('http://localhost:8000/car-edit.php', {
+      id: car.id,
+      mark: car.mark,  
+      model: car.model,
+      year: car.year,
+      maxSpeed: car.maxSpeed,
+      isAutomatic: car.isAutomatic,
+      engine: car.engine, 
+      numberOfDoors: car.numberOfDoors
+    });
+  }
+
+  public removeCar(car: Car)
+  {
+    return new Observable((o: Observer<any>) => {
+      setTimeout(() => {
+        o.next(car);
+        return o.complete();
+      }, 1000);
+    });
   }
 
 }

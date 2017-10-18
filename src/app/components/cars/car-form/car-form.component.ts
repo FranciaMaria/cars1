@@ -1,15 +1,15 @@
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
 import { Car } from '../../../share/models/car.model';
 import { CarsService } from '../../../share/services/cars.service';
-import { HttpErrorResponse } from '@angular/common/http';
+//import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-form',
   templateUrl: './car-form.component.html',
   styleUrls: ['./car-form.component.css']
 })
-export class CarFormComponent implements OnInit {
+/*export class CarFormComponent implements OnInit {
 
   private cars: any[] = [];
   private newCar: Car = new Car();
@@ -37,8 +37,29 @@ export class CarFormComponent implements OnInit {
       );
   }
 
+
   ngOnInit() {
 
+  }
+}
+
+*/
+
+export class CarFormComponent {
+  @Output() onSubmit = new EventEmitter<Car>();
+
+  private newCar: Car = new Car();
+
+  constructor() {
+  }
+
+  submitCar(car: Car) {
+    this.onSubmit.emit(car);
+    this.newCar = new Car();
+  }
+
+  edit(car: Car) {
+    this.newCar = Object.assign({}, car);
   }
 }
 

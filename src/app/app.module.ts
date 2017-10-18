@@ -10,10 +10,14 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { CarsService } from './share/services/cars.service';
 import { CarFormComponent } from './components/cars/car-form/car-form.component';
+import { CarRowComponent } from './components/cars/car-row/car-row.component';
+import { FilterPipe } from './share/pipes/filter.pipe';
+
 
 const appRoutes:Routes = [
  { path: 'cars', component: CarsComponent },
  { path: 'add', component: CarFormComponent },
+ { path: 'cars', component: CarFormComponent },
  { path: '', redirectTo: '/', pathMatch: 'full' }
 ]
 
@@ -22,7 +26,9 @@ const appRoutes:Routes = [
     AppComponent,
     LayoutComponent,
     CarsComponent,
-    CarFormComponent
+    CarFormComponent,
+    CarRowComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

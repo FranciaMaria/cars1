@@ -1,0 +1,31 @@
+<td class="align-middle">{{ index }}</td>
+<td class="align-middle">{{ oldIndex }}</td>
+<td class="align-middle">
+	<a [routerLink]="['/cars', car.id]">
+	</a>
+</td>
+<td class="align-middle">
+	{{car.mark}}
+</td>
+ <td class="align-middle">
+	{{car.model}}
+</td>
+<td class="align-middle">
+	{{car.year}}
+</td>
+<td class="align-middle">
+	{{car.maxSpeed}}
+</td>
+<td class="align-middle">
+	{{car.isAutomatic}}
+</td>
+<td class="align-middle">
+	{{car.engine}}
+</td>
+<td class="align-middle">
+	{{car.numberOfDoors}}
+</td>
+<td>
+	<button class="btn btn-primary btn-sm" (click)="edit(car)">Edit</button>
+	<button class="btn btn-danger btn-sm" (click)="remove(car)">Remove</button>
+</td>

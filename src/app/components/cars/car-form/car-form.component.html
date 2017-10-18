@@ -1,7 +1,135 @@
- <form #carForm="ngForm" (ngSubmit)="addCar(newCar); carForm.reset()">
+<div class="input-group col-md-5 pl-0 my-lg-4 my-2">
+<form #carForm="ngForm" (ngSubmit)="submitCar(newCar); carForm.reset()">
 
-    	<label for="id">ID:</label>
-    	<input name="id" #id="ngModel" [(ngModel)]="newCar.id" type="number"/><br>
+  <div class="form-group">
+    <label>Mark</label>
+    <input #mark="ngModel" [(ngModel)]="newCar.mark" name='mark' type="text" class="form-control" required minlength="2">
+
+    <div *ngIf="mark.invalid && (mark.dirty || mark.touched)"
+     class="alert alert-danger">
+      <div *ngIf="mark.errors.required">
+        Mark required.
+      </div>
+      <div *ngIf="mark.errors.minlength">
+        Mark must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label>Model</label>
+    <input #model="ngModel" [(ngModel)]="newCar.model" name='model' type="text" class="form-control" required minlength="2">
+
+    <div *ngIf="model.invalid && (model.dirty || model.touched)"
+     class="alert alert-danger">
+      <div *ngIf="model.errors.required">
+        Model required.
+      </div>
+      <div *ngIf="model.errors.minlength">
+        Model must be at least 2 characters long.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Year</label>
+    <select #year="ngModel" [(ngModel)]="newCar.year" name='year' required="">
+    	<option value="2007">2017</option>
+			<option value="2006">2016</option>
+			<option value="2005">2015</option>
+			<option value="2004">2014</option>
+			<option value="2003">2013</option>
+			<option value="2002">2012</option>
+			<option value="2001">2011</option>
+			<option value="2000">2010</option>
+			<option value="1999">2009</option>
+			<option value="1998">2008</option>
+			<option value="2007">2007</option>
+			<option value="2006">2006</option>
+			<option value="2005">2005</option>
+			<option value="2004">2004</option>
+			<option value="2003">2003</option>
+			<option value="2002">2002</option>
+			<option value="2001">2001</option>
+			<option value="2000">2000</option>
+			<option value="1999">1999</option>
+			<option value="1998">1998</option>
+			<option value="1997">1997</option>
+			<option value="1996">1996</option>
+			<option value="1995">1995</option>
+			<option value="1994">1994</option>
+			<option value="1993">1993</option>
+			<option value="1992">1992</option>
+			<option value="1991">1991</option>
+			<option value="1990">1990</option>
+	 	</select>    	
+
+    <div *ngIf="year.invalid && (year.dirty || year.touched)"
+     class="alert alert-danger">
+      <div *ngIf="year.errors.required">
+        Year required.
+      </div>
+    </div>
+  </div>
+
+  <label for="maxSpeed">Max Speed (from 20 to 300):</label>
+  <input name="maxSpeed" #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed" type="number" min="20" max="300" class="form-control"><br>
+
+  <!-- <div *ngIf="maxSpeed.invalid && (maxSpeed.dirty || maxSpeed.touched)"
+     class="alert alert-danger">
+      <div *ngIf="maxSpeed.value > 300 || maxSpeed.value < 20">
+        Minimum of Max Speed could be 20 and maximum 300.
+      </div>
+  </div> -->
+  
+
+  <div class="form-group">
+    <label>Is Automatic?</label>
+    <input #isAutomatic="ngModel" [(ngModel)]="newCar.isAutomatic" name='isAutomatic' type="checkbox" class="form-control" value="true">
+  </div>
+
+  <div class="form-group">
+    <label>Engine</label>
+    <input type="radio" name="engine" value="diesel" #engine="ngModel" [(ngModel)]="newCar.engine" required>diesel<br>
+    <input type="radio" name="engine" value="petrol" #engine="ngModel" [(ngModel)]="newCar.engine" required>petrol<br>
+  	<input type="radio" name="engine" value="electric" #engine="ngModel" [(ngModel)]="newCar.engine" required>electric<br>
+  	<input type="radio" name="engine" value="hybrid" #engine="ngModel" [(ngModel)]="newCar.engine" required>hybrid<br>
+
+    <div *ngIf="engine.invalid && (engine.dirty || engine.touched)"
+     class="alert alert-danger">
+      <div *ngIf="model.errors.required">
+        Engine required.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Number of Doors</label>
+    <input #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" name='numberOfDoors' type="number" class="form-control" required min="2" max="5">
+
+    <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
+     class="alert alert-danger">
+      <div *ngIf="numberOfDoors.errors.required">
+        Number of Doors required.
+      </div>
+    </div>
+  </div>
+
+  
+  <button type="button" class="btn"
+    (click)="carForm.reset()"
+    [disabled]="carForm.form.pristine"
+  >Reset</button>
+  <button type="submit" class="btn btn-primary"
+    [disabled]="!carForm.form.valid"
+  >{{ newCar.id ? "Edit Car" : "Add Car" }}</button>
+</form>
+</div>
+
+
+
+ <!-- <form #carForm="ngForm" (ngSubmit)="addCar(newCar); carForm.reset()">
   
     	<label for="mark">Mark:</label>
     	<input name="mark" #mark="ngModel" [(ngModel)]="newCar.mark" type="text"/><br>
@@ -40,7 +168,7 @@
 			<option value="1991">1991</option>
 			<option value="1990">1990</option>
 	 	</select><br>
-    	<!-- <input name="year" type="number" [(ngModel)]="newCar.year"/> -->
+    	<input name="year" type="number" [(ngModel)]="newCar.year"/>
 
     	<label for="maxSpeed">Max Speed:</label>
     	<input name="maxSpeed" #maxSpeed="ngModel" [(ngModel)]="newCar.maxSpeed" type="number"/><br>
@@ -59,11 +187,15 @@
     	<label for="numberOfDoors">Number of Doors:</label>
     	<input name="numberOfDoors" #numberOfDoors="ngModel" [(ngModel)]="newCar.numberOfDoors" type="number"/><br>
 
-    	<button class="btn btn-primary" (click)="addCar(newCar); carForm.reset()" [disabled]="!carForm.valid">Add Car</button>
+    	<!-- <button class="btn btn-primary" (click)="addCar(newCar); carForm.reset()" [disabled]="!carForm.valid">Add Car</button> -->
 
-    
+    <!-- 	<button type="button" class="btn" (click)="carForm.reset()" [disabled]="carForm.form.pristine">Reset</button>
+  
+  		<button type="submit" class="btn btn-primary" [disabled]="!carForm.form.valid">{{ newCar.id ? "Edit Car" : "Add Car" }}</button> -->
+
+ 		<!-- <button type="submit" class="btn btn-primary" (click)="carForm.submitCar(newCar)" [disabled]="!carForm.form.valid">Add Car</button>
+    </form> -->
 
 
-</form>
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Bootstrap Example</title>
@@ -10,10 +10,12 @@
 </head>
 <body>
 
+<app-car-form #carForm (onSubmit)="submitCar($event)"></app-car-form>
+
 <div class="container">
   <h2>Car Table</h2>
   <p></p>            
-  <table class="table table-bordered" *ngFor = "let car of cars; let i = index; ">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -24,22 +26,57 @@
         <th>Automatic</th>
         <th>Engine</th>
         <th>Number of Doors</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>{{car.id}}</td>
+      <tr *ngFor="let car of cars; let i = index" [carRow]="car" [index]="i" (onEdit)="carForm.edit(car)" (onRemove)="remove(car)">
+        <!-- <td>{{car.id}}</td>
         <td>{{car.mark}}</td>
         <td>{{car.model}}</td>
         <td>{{car.year}}</td>
         <td>{{car.maxSpeed}}</td>
         <td>{{car.isAutomatic}}</td>
         <td>{{car.engine}}</td>
-        <td>{{car.numberOfDoors}}</td>
-      </tr>
-    </tbody>
+        <td>{{car.numberOfDoors}}</td> -->
+        <!-- <td  ></td> -->
+<!--       </tr>
+    
   </table>
 </div>
 
 </body>
 </html>
+ -->
+
+ <h1>Cars</h1>
+
+<app-car-form #carForm (onSubmit)="submitCar($event)"></app-car-form>
+
+<div class="input-group col-md-5 pl-0 my-lg-4 my-2">
+  <span class="input-group-addon">Filter by name</span>
+  <input [(ngModel)]="filter" type="text" class="form-control">
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Old Index</th>
+      <th></th>
+      <th>Mark</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Max Speed</th>
+      <th>Automatic</th>
+      <th>Engine</th>
+      <th>Number of Doors</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars; let i = index" [carRow]="car" [index]="i" (onEdit)="carForm.edit(car)" (onRemove)="remove(car)">
+    </tr>
+</table>
+
+<router-outlet></router-outlet>
